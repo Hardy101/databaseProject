@@ -73,7 +73,6 @@ if (isset($_POST['submit'])) {
                 <div class="form-input flex-btw">
                     <label for="">Account type</label>
                     <select name="user_type" id="" required>
-                        <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>
                 </div>
