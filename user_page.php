@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
    mysqli_query($conn, $insert);
 }
 
+
 // Getting Data from the transactions Tab
 $user_transact = 'SELECT id, name, transact_type, transact_desc, amount, created_at FROM user_transactions ORDER BY id';
 $result_0 = mysqli_query($conn, $user_transact);
@@ -59,7 +60,7 @@ $trans_1 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
          <input type="number" name="amnt" id="" placeholder="Amount">
       </div>
       <div class="form-input">
-         <input type="submit" name="submit" value="Enter transaction" >
+         <input type="submit" name="submit" value="Enter transaction">
       </div>
    </form>
 
@@ -73,7 +74,7 @@ $trans_1 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
             <li class="side-content active"><a href=""><img src="assets/img/home.png" width="25" height="25" alt=""></a></li>
             <!-- <li><a href=""><i class="fa fa-wallet"></i></a></li> -->
             <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-chart.png" width="25" height="25" alt=""></a></li>
-            <li class="side-content"><a href="expense.php"><img src="assets/img/expenses.png" width="25" height="25" alt=""></a></li>
+            <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="25" height="25" alt=""></a></li>
             <li class="side-content"><a href=""><img src="assets/img/wallet.png" width="25" height="25" alt=""></a></li>
          </ul>
          <a class="prof"><?php echo $_SESSION['user_name'][0] ?></a>
