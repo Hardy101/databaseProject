@@ -64,27 +64,26 @@ $trans_1 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
       </div>
    </form>
 
-   <main class="flex-btw">
+   <main>
 
-      <!-- side bar -->
-      <div class="sidebar">
-         <h1 class="expense-h1">Et</h1>
-
-         <ul class="side-links">
-            <li class="side-content active"><a href=""><img src="assets/img/home.png" width="25" height="25" alt=""></a></li>
-            <!-- <li><a href=""><i class="fa fa-wallet"></i></a></li> -->
-            <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-chart.png" width="25" height="25" alt=""></a></li>
-            <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="25" height="25" alt=""></a></li>
-            <li class="side-content"><a href=""><img src="assets/img/wallet.png" width="25" height="25" alt=""></a></li>
-         </ul>
-         <a class="prof"><?php echo $_SESSION['user_name'][0] ?></a>
-         <div class="t-tip hide">
-            <a href="logout.php">Logout</a>
-         </div>
-
-      </div>
       <!-- Transactions -->
-      <div class="transactions">
+      <div class="transactions flex-btw">
+         <!-- side bar -->
+         <div class="sidebar">
+            <h1 class="expense-h1">Et</h1>
+            <ul class="side-links">
+               <li class="side-content active"><a href=""><img src="assets/img/home.png" width="25" height="25" alt=""></a></li>
+               <!-- <li><a href=""><i class="fa fa-wallet"></i></a></li> -->
+               <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-chart.png" width="25" height="25" alt=""></a></li>
+               <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="25" height="25" alt=""></a></li>
+               <li class="side-content"><a href=""><img src="assets/img/wallet.png" width="25" height="25" alt=""></a></li>
+            </ul>
+            <a class="prof"><?php echo $_SESSION['user_name'][0] ?></a>
+            <div class="t-tip hide">
+               <a href="logout.php">Logout</a>
+            </div>
+
+         </div>
          <div class="transact">
             <div class="tract flex-btw">
                <h2>Transactions</h2>
@@ -181,19 +180,21 @@ $trans_1 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
 
             </div>
          </div>
-      </div>
-
-
-      <!-- Overview -->
-      <!-- <div class="overview">
-         <div class="overview-tab">
-            <h2>Monthly Overview</h2>
-            <div class="over-tab">
-               <div class="overview-expense"></div>
-               <div class="overview-income"></div>
+         <!-- Overview -->
+         <div class="overview">
+            <div class="overview-tab">
+               <h2>Monthly Overview</h2>
+               <div class="over-tab">
+                  <div class="overview-expense"></div>
+                  <div class="overview-income"></div>
+               </div>
             </div>
          </div>
-      </div> -->
+      </div>
+      <!-- End of transactions Div -->
+
+
+
    </main>
    <script src="assets/js/app.js"></script>
 </body>

@@ -10,6 +10,10 @@
   display: flex;
   justify-content: space-between;
 }
+.flex-ard {
+  display: flex;
+  justify-content: space-around;
+}
 .expense-h1 {
   color: #ff6d28;
 }
@@ -149,18 +153,14 @@ select:focus {
   outline: none;
 }
 /* Accounts */
-main {
-  width: 1050px;
-}
 .transact {
   position: relative;
+  max-width: 500px;
 }
 .sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
+  position: relative;
   width: 76px;
+  height: 100%;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   z-index: 999;
@@ -267,8 +267,7 @@ main {
   margin: 20px 0;
 }
 .transactions {
-  width: 600px;
-  padding: 3rem 3rem 3rem 6rem;
+height: 100vh;
 }
 .trans-details.hide {
   display: none;
