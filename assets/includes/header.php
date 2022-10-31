@@ -9,5 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/stylesnew.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- icon cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
