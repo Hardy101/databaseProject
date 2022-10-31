@@ -332,7 +332,7 @@ select:focus {
 .expenses .price {
   color: rgb(255, 0, 0);
 }
-f .income .price {
+.income .price {
   color: rgb(0, 255, 0);
 }
 .overview {
