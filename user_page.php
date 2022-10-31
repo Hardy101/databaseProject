@@ -63,7 +63,8 @@ if (isset($_POST['submit'])) {
    <button class="max trans-03"><i class="fa fa-arrow-right"></i></button>
    <form action="" method="POST" class="scale-form hide trans-03">
       <div class="form-input">
-         <input type="text" name="desc" id="" placeholder="Transaction description">
+         <label for="">Transaction description</label>
+         <input type="text" name="desc" id="" placeholder="purpose of transaction">
       </div>
       <div class="form-input">
          <label for="">Transaction type</label>
@@ -73,6 +74,7 @@ if (isset($_POST['submit'])) {
          </select>
       </div>
       <div class="form-input">
+         <label>Amount</label>
          <input type="number" name="amnt" id="" placeholder="Amount">
       </div>
       <div class="form-input">
@@ -88,11 +90,11 @@ if (isset($_POST['submit'])) {
          <div class="sidebar">
             <h1 class="expense-h1">Et</h1>
             <ul class="side-links">
-               <li class="side-content active"><a href=""><img src="assets/img/home.png" width="25" height="25" alt=""></a></li>
+               <li class="side-content active"><a href=""><img src="assets/img/home-2.png" width="35" height="35" alt=""></a></li>
                <!-- <li><a href=""><i class="fa fa-wallet"></i></a></li> -->
-               <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-chart.png" width="25" height="25" alt=""></a></li>
-               <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="25" height="25" alt=""></a></li>
-               <li class="side-content"><a href=""><img src="assets/img/wallet.png" width="25" height="25" alt=""></a></li>
+               <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-graph.png" width="35" height="35" alt=""></a></li>
+               <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="35" height="35" alt=""></a></li>
+               <li class="side-content"><a href=""><img src="assets/img/income.png" width="35" height="35" alt=""></a></li>
             </ul>
             <a class="prof"><?php echo $_SESSION['user_name'][0] ?></a>
             <div class="t-tip hide">
@@ -104,7 +106,7 @@ if (isset($_POST['submit'])) {
          <div class="trans-over">
 
             <div class="transact">
-               <h1 class="top-h" style="text-align: left; ">Hello, <?php echo $_SESSION['user_name'] ?></h1>
+               <h1 class="top-h" style="text-align: left; ">Hello, <img src="assets/img/wave.png" width="40" height="40" alt="wave icon"> <?php echo $_SESSION['user_name'] ?></h1>
                <div class="tract flex-btw">
                   <h2>Transactions</h2>
                   <button class="add trans-03"><i class="fa fa-plus"></i></button>

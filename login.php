@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 
     $result = mysqli_query($conn, $select);
 
-    
+
     if (mysqli_num_rows($result) > 0) {
 
         $row = mysqli_fetch_array($result);
@@ -48,7 +48,9 @@ if (isset($_POST['submit'])) {
     <section>
         <div class="container">
             <form action="" method="POST">
-                <h1>Account Login</h1>
+                <div class="form-input img-input">
+                    <img src="assets/img/grp.png" alt="">
+                </div>
                 <?php
                 if (isset($error)) {
                     foreach ($error as $error) {
@@ -63,10 +65,11 @@ if (isset($_POST['submit'])) {
                         <option value="">User</option>
                     </select>
                 </div> -->
+
+                <h1>Account Login</h1>
                 <div class="form-input">
                     <label for="">Email</label>
                     <input type="text" name="email" placeholder="Enter your email">
-
                 </div>
                 <div class="form-input">
                     <label for="">Password</label>

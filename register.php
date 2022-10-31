@@ -39,6 +39,9 @@ if (isset($_POST['submit'])) {
     <section>
         <div class="container">
             <form action="" method="POST">
+                <div class="form-input img-input">
+                    <img src="assets/img/grp.png" alt="">
+                </div>
                 <h1>Create Account</h1>
                 <?php
                 if (isset($error)) {
