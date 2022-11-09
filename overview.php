@@ -40,11 +40,11 @@ $trans = mysqli_fetch_all($result_1, MYSQLI_ASSOC);
                 <ul class="side-links">
                     <li class="side-content"><a href="user_page.php" class="flex-side"><img src="assets/img/home-2.png" width="25" height="25" alt="">
                             <span>Dashboard</span></a></li>
-                    <li class="side-content active"><a href="income.php" class="flex-side"><img src="assets/img/income.png" width="25" height="25" alt="">
+                    <li class="side-content"><a href="income.php" class="flex-side"><img src="assets/img/income.png" width="25" height="25" alt="">
                             <span>Income</span></a></li>
                     <li class="side-content"><a href="expense.php" class="flex-side"><img src="assets/img/expenses.png" width="25" height="25" alt="">
                             <span>Expenses</span></a></li>
-                    <li class="side-content"><a href="overview.php" class="flex-side"><img src="assets/img/pie-graph.png" width="25" height="25" alt=""> <span>Overview</span></a></li>
+                    <li class="side-content overview"><a href="overview.php" class="flex-side"><img src="assets/img/pie-graph.png" width="25" height="25" alt=""> <span>Overview</span></a></li>
                 </ul>
                 <div class="down">
                     <a href="logout.php" class="acc-log"> <i class="fa fa-sign-out"></i> Logout</a>

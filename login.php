@@ -45,6 +45,7 @@ if (isset($_POST['submit'])) {
 </header>
 
 <body>
+    <?php include "assets/includes/nav_1.php" ?>
     <section>
         <div class="container">
             <form action="" method="POST">
@@ -70,10 +71,12 @@ if (isset($_POST['submit'])) {
                 <div class="form-input">
                     <label for="">Email</label>
                     <input type="text" name="email" placeholder="Enter your email">
+                    <button class="fa fa-user form-btn func"></button>
                 </div>
                 <div class="form-input">
                     <label for="">Password</label>
-                    <input type="password" name="password" placeholder="Enter your password">
+                    <input type="password" name="password" placeholder="Enter your password" class="password">
+                    <button class="fa fa-eye form-btn p-btn func"></button>
                 </div>
                 <div class="form-input">
                     <input name="submit" type="submit" value="Login Now" class="trans-0.3">
@@ -81,9 +84,37 @@ if (isset($_POST['submit'])) {
                 <div class="form-input">
                     <p class="last-input">don`t have an account? <a href="register.php">Register now</a></p>
                 </div>
+                <div class="form-input">
+                    <button class="input-btn func" onclick="showPassword()">Show Password</button>
+                </div>
             </form>
         </div>
     </section>
+    <script>
+        const password = document.querySelectorAll('.password')
+        const formBtn = document.querySelectorAll('.func')
+        const pBtn = document.querySelector('.p-btn')
+        const slash = document.querySelector('.slash')
+        const inputBtn = document.querySelector('.input-btn')
+
+        formBtn.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault()
+            })
+        })
+        const showPassword = () => {
+            password.forEach((password) => {
+                if (password.type === "password") {
+                    password.type = 'text'
+                    inputBtn.textContent = 'Hide Password'
+                } else {
+                    password.type = 'password'
+                    inputBtn.textContent = 'Show Password'
+                }
+            })
+        }
+        pBtn.addEventListener('click', showPassword)
+    </script>
 </body>
 
 </html>

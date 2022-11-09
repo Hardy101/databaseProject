@@ -18,7 +18,6 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($result) > 0) {
         $error[] = 'user already exist!';
     } else {
-
         if ($pass != $cpass) {
             $error[] = 'password not matched!';
         } else {
@@ -30,12 +29,14 @@ if (isset($_POST['submit'])) {
         }
     }
 };
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'assets/includes/header.php' ?>
 
 <body>
+    <?php include "assets/includes/nav_1.php" ?>
     <section>
         <div class="container">
             <form action="" method="POST">
@@ -51,6 +52,7 @@ if (isset($_POST['submit'])) {
                 }
                 ?>
                 <div class="form-input flex-btw">
+                    <button class="fa fa-user form-btn func"></button>
                     <label for="">Email</label>
                     <input type="email" name="email" placeholder="Enter your email" required>
                 </div>
@@ -66,12 +68,14 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-input flex-btw">
+                    <button class="fa fa-eye form-btn func"></button>
                     <label for="">Password</label>
-                    <input type="password" name="password" placeholder="Enter your password">
+                    <input type="password" name="password" placeholder="Enter your password" class="password">
                 </div>
                 <div class="form-input flex-btw">
+                    <button class="fa fa-eye form-btn func"></button>
                     <label for="">Repeat Password</label>
-                    <input type="password" name="cpassword" placeholder="Confirm password">
+                    <input type="password" name="cpassword" placeholder="Confirm password" class="password">
                 </div>
                 <div class="form-input flex-btw">
                     <label for="">Account type</label>
@@ -85,9 +89,33 @@ if (isset($_POST['submit'])) {
                 <div class="form-input flex-btw">
                     <p class="last-input">already have an account? <a href="login.php">Login now</a></p>
                 </div>
+                <div class="form-input">
+                    <button class="input-btn func" onclick="showPassword()">Show Password</button>
+                </div>
             </form>
         </div>
     </section>
+    <script>
+        const password = document.querySelectorAll('.password')
+        const formBtn = document.querySelectorAll('.func')
+        const inputBtn = document.querySelector('.input-btn')
+        formBtn.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault()
+            })
+        })
+        const showPassword = () => {
+            password.forEach((password) => {
+                if (password.type === "password") {
+                    password.type = 'text'
+                    inputBtn.textContent = 'Hide Password'
+                } else {
+                    password.type = 'password'
+                    inputBtn.textContent = 'Show Password'
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

@@ -50,6 +50,8 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'assets/includes/header.php' ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
 <title>user page</title>
 <style>
    body {
@@ -59,10 +61,12 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+   <?php include "assets/includes/nav.php" ?>
+   <div class="overlay"></div>
 
-   <button class="max trans-03"><i class="fa fa-arrow-right"></i></button>
-   <form action="" method="POST" class="scale-form hide trans-03">
+   <form action="user_page.php" method="POST" class="scale-form remove trans-03">
       <div class="form-input">
+
          <label for="">Transaction description</label>
          <input type="text" name="desc" id="" placeholder="purpose of transaction">
       </div>
@@ -78,61 +82,63 @@ if (isset($_POST['submit'])) {
          <input type="number" name="amnt" id="" placeholder="Amount">
       </div>
       <div class="form-input">
-         <input type="submit" name="submit" value="Enter transaction">
+         <input type="submit" name="submit" value="Enter transaction" class="cancel">
+      </div>
+      <div class="form-input">
+         <button class="cancel">cancel transaction</button>
       </div>
    </form>
+   <div class="sidebar">
+      <h1 class="expense-h1">Et</h1>
+      <ul class="side-links">
+         <li class="side-content active"><a href="user_page.php" class="flex-side"><img src="assets/img/home-2.png" width="25" height="25" alt="">
+               <span>Dashboard</span></a></li>
+         <li class="side-content"><a href="income.php" class="flex-side"><img src="assets/img/income.png" width="25" height="25" alt="">
+               <span>Income</span></a></li>
+         <li class="side-content"><a href="expense.php" class="flex-side"><img src="assets/img/expenses.png" width="25" height="25" alt="">
+               <span>Expenses</span></a></li>
+         <li class="side-content"><a href="overview.php" class="flex-side"><img src="assets/img/pie-graph.png" width="25" height="25" alt=""> <span>Overview</span></a></li>
+      </ul>
+      <div class="down">
+         <a href="logout.php" class="acc-log"> <i class="fa fa-sign-out"></i> Logout</a>
+         <p class="acc-i"><?php echo $_SESSION['user_name'], " ", $_SESSION['last_name'] ?></p>
+      </div>
 
+   </div>
    <main>
-
       <!-- Transactions -->
       <div class="transactions flex-btw">
          <!-- side bar -->
-         <div class="sidebar">
-            <h1 class="expense-h1">Et</h1>
-            <ul class="side-links">
-               <li class="side-content active"><a href=""><img src="assets/img/home-2.png" width="35" height="35" alt=""></a></li>
-               <!-- <li><a href=""><i class="fa fa-wallet"></i></a></li> -->
-               <li class="side-content"><a href="" class="flex-btw"><img src="assets/img/pie-graph.png" width="35" height="35" alt=""></a></li>
-               <li class="side-content"><a href=""><img src="assets/img/expenses.png" width="35" height="35" alt=""></a></li>
-               <li class="side-content"><a href=""><img src="assets/img/income.png" width="35" height="35" alt=""></a></li>
-            </ul>
-            <a class="prof"><?php echo $_SESSION['user_name'][0] ?></a>
-            <div class="t-tip hide">
-               <a href="logout.php">Logout</a>
-            </div>
-
-         </div>
          <!-- A div for transactions tab and overview -->
          <div class="trans-over">
 
             <div class="transact">
-               <h1 class="top-h" style="text-align: left; ">Hello, <img src="assets/img/wave.png" width="40" height="40" alt="wave icon"> <?php echo $_SESSION['user_name'] ?></h1>
+               <h1 class="top-h" style="text-align: left; ">Hello, <?php echo $_SESSION['user_name'] ?> <img src="assets/img/wave.png" width="40" height="40" alt="wave icon"></h1>
                <div class="tract flex-btw">
-                  <h2>Transactions</h2>
-                  <button class="add trans-03"><i class="fa fa-plus"></i></button>
-               </div>
-               <div class="form-input">
-                  <input type="search" name="search" id="" placeholder="Search">
+                  <h2>Dashboard</h2>
+                  <button class="add-btn max trans-03"><i class="fa fa-bars"></i></button>
                </div>
                <div class="trans-header">
-                  <div class="header flex-btw">
-                     <span class="header-info">Net</span>
-                     <span class="header-info">Total income</span>
-                     <span class="header-info">Total expense</span>
-                  </div>
-                  <!-- Cashflow detail values -->
-                  <div class="info flex-btw">
+                  <div class="header">
                      <?php foreach ($trans_1 as $user_details) : ?>
                         <?php if ($user_details['id'] == $_SESSION['id']) : ?>
-                           <span class="b-info bal-val">$ <?php echo $user_details['user_balance'] ?></span>
-                           <span class="b-info">$ <?php echo $user_details['user_income'] ?></span>
-                           <span class="b-info">$ <?php echo $user_details['user_expense'] ?></span>
+                           <div class="b-info bal-val">
+                              <h3 class="b-info-h3">Balance</h3>
+                              <div>$<span class="bal-label"><?php echo $user_details['user_balance'] ?></span></div>
+                           </div>
+                           <div class="b-info info-income">
+                              <h3 class="b-info-h3">Total Income</h3>
+                              <div>+ $ <span class="income-label"><?php echo $user_details['user_income'] ?></span></div>
+                           </div>
+                           <div class="b-info info-expense">
+                              <h3 class="b-info-h3">Total Expenses</h3>
+                              <div>- $ <span class="expense-label"><?php echo $user_details['user_expense'] ?></span></div>
+                           </div>
                         <?php endif ?>
                      <?php endforeach ?>
-
                   </div>
                </div>
-               <hr class="hr" />
+               <h2>Transactions</h2>
                <div class="flex-btw">
                   <!-- Sorting Buttons -->
                   <div class="info sort">
@@ -141,83 +147,83 @@ if (isset($_POST['submit'])) {
                      <button class="sort-btn trans-0.3">Expenses</button>
                   </div>
                   <!-- Filter Button -->
-                  <button name="sort_btn" type="submit" class="filter trans-0.3">
-                     <img src="assets/img/filter.png" alt="">
+                  <button name="sort_btn" type="submit" class="filter trans-0.3 flex-btw add">
+                     <i class="fa fa-plus"></i>
                   </button>
                </div>
                <!-- All Transaction type Tabs -->
 
 
-
-               <div class="trans-details all hide">
-                  <?php foreach ($trans_0 as $details) : ?>
-                     <div class="dets flex-btw">
-                        <div class="info">
-                           <h3 class="info-h"><?php echo $details['transact_desc'] ?></h3>
-                           <span><?php $details['transact_amount'] ?></span>
-                           <span class="info-span"><?php echo $details['created_at'] ?></span>
-                        </div>
-                        <div class="price">
-                           <span>$<?php echo $details['transact_amount'] ?></span>
-                        </div>
-                     </div>
-                  <?php endforeach ?>
-               </div>
-               <!-- End of transaction type -->
-               <!-- Income Tabs -->
-               <div class="trans-details income" id="income">
-                  <!-- Details -->
-                  <?php foreach ($trans_0 as $details) : ?>
-                     <?php if ($details['transact_type'] === 'income' && $details['id'] == $user_id) : ?>
+               <div class="trans-all">
+                  <span class="see-all">* See all transactions in the sidebar</span>
+                  <div class="trans-details all hide">
+                     <?php foreach ($trans_0 as $details) : ?>
                         <div class="dets flex-btw">
                            <div class="info">
                               <h3 class="info-h"><?php echo $details['transact_desc'] ?></h3>
+                              <span><?php $details['transact_amount'] ?></span>
                               <span class="info-span"><?php echo $details['created_at'] ?></span>
                            </div>
                            <div class="price">
-                              <span>$<?php echo $details['amount'] ?></span>
+                              <span>$<?php echo $details['transact_amount'] ?></span>
                            </div>
                         </div>
-                     <?php endif ?>
-                  <?php endforeach ?>
-                  <!-- End of Income Tab -->
-
-               </div>
-               <!-- Expenses Tab -->
-               <div class="trans-details expenses">
-                  <?php foreach ($trans_0 as $details) : ?>
-                     <?php if ($details['transact_type'] === 'expense' && $details['id'] == $user_id) : ?>
-                        <div class="dets flex-btw">
-                           <div class="info">
-                              <h3 class="info-h"><?php echo $details['transact_desc'] ?></h3>
-                              <span class="info-span"><?php echo $details['created_at'] ?></span>
+                     <?php endforeach ?>
+                  </div>
+                  <!-- End of transaction type -->
+                  <!-- Income Tabs -->
+                  <div class="trans-details income" id="income">
+                     <!-- Details -->
+                     <?php foreach ($trans_0 as $details) : ?>
+                        <?php if ($details['transact_type'] === 'income' && $details['id'] == $user_id) : ?>
+                           <div class="dets flex-btw">
+                              <div class="info">
+                                 <h3 class="info-h"><?php echo $details['transact_desc'] ?></h3>
+                                 <span class="info-span"><?php echo $details['created_at'] ?></span>
+                              </div>
+                              <div class="price">
+                                 <span>$<?php echo $details['amount'] ?></span>
+                              </div>
                            </div>
-                           <div class="price">
-                              <span>$<?php echo $details['amount'] ?></span>
-                           </div>
-                        </div>
-                     <?php endif ?>
-                  <?php endforeach ?>
-                  <!-- End of details -->
+                        <?php endif ?>
+                     <?php endforeach ?>
+                     <!-- End of Income Tab -->
 
+                  </div>
+                  <!-- Expenses Tab -->
+                  <div class="trans-details expenses">
+                     <?php foreach ($trans_0 as $details) : ?>
+                        <?php if ($details['transact_type'] === 'expense' && $details['id'] == $user_id) : ?>
+                           <div class="dets flex-btw">
+                              <div class="info">
+                                 <h3 class="info-h"><?php echo $details['transact_desc'] ?></h3>
+                                 <span class="info-span"><?php echo $details['created_at'] ?></span>
+                              </div>
+                              <div class="price">
+                                 <span>$<?php echo $details['amount'] ?></span>
+                              </div>
+                           </div>
+                        <?php endif ?>
+                     <?php endforeach ?>
+                     <!-- End of details -->
+
+                  </div>
                </div>
             </div>
             <!-- Overview -->
             <div class="overview">
                <div class="overview-tab">
-                  <h2>Monthly Overview</h2>
+                  <h2>Transaction Overview</h2>
                   <div class="over-tab">
                      <div class="overview-expense"></div>
                      <div class="overview-income"></div>
                   </div>
+                  <canvas id="myChart" class="chart"></canvas>
                </div>
             </div>
          </div>
       </div>
       <!-- End of transactions Div -->
-
-
-
    </main>
    <script src="assets/js/app.js"></script>
 </body>
