@@ -73,6 +73,19 @@ body.hidden {
   transform: scale(1);
 }
 /* Navigation Menu */
+.util{
+  margin: auto 0;
+}
+.anc{
+  text-decoration: none;
+  color: #000;
+  padding: 0.6rem;
+  border-radius: 3px;
+}
+.anc:hover{
+  background: var(--primary-orange);
+  color: #fff;
+}
 .fixed {
   position: absolute;
   width: 100%;
@@ -82,7 +95,7 @@ body.hidden {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 .nav-ul {
-  margin: 1rem 0;
+  margin: auto 0;
 }
 .nav-content {
   padding: 1rem;
